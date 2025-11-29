@@ -56,15 +56,9 @@ export const PackageCard = () => {
                   <Badge className="bg-primary text-primary-foreground">Featured Package</Badge>
                 </div>
                 <CardTitle className="text-3xl font-serif">Gudisa 1 Night Package</CardTitle>
-                <div className="flex items-center justify-between">
-                  <CardDescription className="text-base">
-                    Pick-up Location: Maredumilli
-                  </CardDescription>
-                  <div className="text-right">
-                    <div className="text-3xl font-bold text-primary">₹599/-</div>
-                    <div className="text-xs text-muted-foreground">per person</div>
-                  </div>
-                </div>
+                <CardDescription className="text-base">
+                  Pick-up Location: Maredumilli
+                </CardDescription>
               </CardHeader>
               
               <CardContent className="space-y-6">
