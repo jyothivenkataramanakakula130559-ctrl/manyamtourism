@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { QRCode } from "./QRCode";
 
 export const Contact = () => {
   return (
@@ -15,7 +16,7 @@ export const Contact = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-4 gap-6">
           <Card className="border-border/50 hover:shadow-lg transition-shadow">
             <CardContent className="pt-6 text-center">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -46,7 +47,7 @@ export const Contact = () => {
           <Card className="border-border/50 hover:shadow-lg transition-shadow">
             <CardContent className="pt-6 text-center">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Mail className="h-6 w-6 text-primary" />
+                <Phone className="h-6 w-6 text-primary" />
               </div>
               <h3 className="font-semibold mb-2 text-foreground">WhatsApp</h3>
               <Button
@@ -58,6 +59,8 @@ export const Contact = () => {
               </Button>
             </CardContent>
           </Card>
+
+          <QRCode />
         </div>
       </div>
     </section>
