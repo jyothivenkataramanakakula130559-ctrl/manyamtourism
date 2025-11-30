@@ -9,7 +9,6 @@ const inclusions = [
   "Vehicle (Maredumilli to Maredumilli)",
   "Accommodation - Camping",
   "Food - 1 Dinner",
-  "Complimentary - South Indian Breakfast",
   "Campfire",
   "Foldable Chairs & Beds",
   "Sound Box (Bluetooth Speaker)",
