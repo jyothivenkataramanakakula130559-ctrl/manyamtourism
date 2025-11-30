@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { ScrollLink } from "./ScrollLink";
-import logo from "@/assets/logo.png";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,11 +30,8 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <a href="#home" className="flex items-center gap-3">
-            <img src={logo} alt="Manyam Tourism Logo" className="h-12 w-12" />
-            <span className="text-xl font-bold font-serif text-foreground hidden sm:inline">
-              Manyam Tourism
-            </span>
+          <a href="#home" className="text-xl font-bold font-serif text-foreground">
+            Manyam Tourism
           </a>
 
           {/* Desktop Navigation */}
