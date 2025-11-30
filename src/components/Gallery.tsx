@@ -1,8 +1,11 @@
+import { useEffect, useState } from "react";
 import campingGroup from "@/assets/camping-group.jpg";
 import campingNight from "@/assets/camping-night.jpg";
 import campingTent from "@/assets/camping-tent.jpg";
 import trekImage from "@/assets/trek.jpg";
 import jeepMountain from "@/assets/jeep-mountain.jpg";
+import { supabase } from "@/integrations/supabase/client";
+import { PhotoUpload } from "./PhotoUpload";
 
 const galleryImages = [
   { src: campingGroup, alt: "Group camping experience at Gudisa" },
@@ -13,6 +16,38 @@ const galleryImages = [
 ];
 
 export const Gallery = () => {
+  const [uploadedPhotos, setUploadedPhotos] = useState<Array<{ src: string; alt: string }>>([]);
+
+  useEffect(() => {
+    fetchUploadedPhotos();
+  }, []);
+
+  const fetchUploadedPhotos = async () => {
+    const { data, error } = await supabase.storage
+      .from('gallery-photos')
+      .list();
+
+    if (error) {
+      console.error('Error fetching photos:', error);
+      return;
+    }
+
+    const photos = data.map((file) => {
+      const { data: urlData } = supabase.storage
+        .from('gallery-photos')
+        .getPublicUrl(file.name);
+      
+      return {
+        src: urlData.publicUrl,
+        alt: `Gallery photo ${file.name}`
+      };
+    });
+
+    setUploadedPhotos(photos);
+  };
+
+  const allImages = [...galleryImages, ...uploadedPhotos];
+
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -25,8 +60,10 @@ export const Gallery = () => {
           </p>
         </div>
 
+        <PhotoUpload />
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryImages.map((image, index) => (
+          {allImages.map((image, index) => (
             <div 
               key={index}
               className="relative overflow-hidden rounded-lg aspect-[4/3] group cursor-pointer shadow-md hover:shadow-xl transition-all duration-300"
